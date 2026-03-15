@@ -7,9 +7,12 @@ load_dotenv()
 TOKEN = os.getenv("GITHUB_TOKEN")
 
 HEADERS = {
-    "Authorization": f"Bearer {TOKEN}",
     "Accept": "application/vnd.github+json"
 }
+
+if TOKEN:
+    HEADERS["Authorization"] = f"Bearer {TOKEN}"
+    
 
 DOWNLOAD_DIR = "downloads"
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
